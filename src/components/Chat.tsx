@@ -60,7 +60,7 @@ const Chat = (props: any) => {
     setShowEmptyChat(false);
 
     try {
-      const response = await fetch(`/api/openai`, {
+      const response = await fetch(`/api/chatmdr`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -166,7 +166,7 @@ const Chat = (props: any) => {
                     </div>
                   </div>
                   <h1 className="text-2xl sm:text-4xl font-semibold text-center text-gray-200 dark:text-gray-600 flex gap-2 items-center justify-center h-screen">
-                    ChatGPT Clone
+                    ChatMDR
                   </h1>
                 </div>
               ) : null}
@@ -196,7 +196,7 @@ const Chat = (props: any) => {
                     overflowY: "hidden",
                   }}
                   // rows={1}
-                  placeholder="Send a message..."
+                  placeholder="What do you want to ask ChatMDR?"
                   className="m-0 w-full resize-none border-0 bg-transparent p-0 pr-7 focus:ring-0 focus-visible:ring-0 dark:bg-transparent pl-2 md:pl-0"
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyDown={handleKeypress}
@@ -213,8 +213,7 @@ const Chat = (props: any) => {
           </form>
           <div className="px-3 pt-2 pb-3 text-center text-xs text-black/50 dark:text-white/50 md:px-4 md:pt-3 md:pb-6">
             <span>
-              ChatGPT Clone may produce inaccurate information about people,
-              places, or facts.
+              ChatMDR is not a substitute for true regulatory expertise and experience. It could generate incorrect results. Please always use your brain and contact your regulatory expert when in doubt.
             </span>
           </div>
         </div>
