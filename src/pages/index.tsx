@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Chat from "@/components/Chat";
 import MobileSiderbar from "@/components/MobileSidebar";
 import Sidebar from "@/components/Sidebar";
@@ -8,6 +8,8 @@ export default function Home() {
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const { trackEvent } = useAnalytics();
 
+  const ref = useRef();
+
   useEffect(() => {
     trackEvent("page.view", { page: "home" });
   }, []);
@@ -16,6 +18,11 @@ export default function Home() {
     setIsComponentVisible(!isComponentVisible);
   };
 
+  const clearChat = async (e: any) => {
+      ref.current.log();
+  };
+
+
   return (
     <main className="overflow-hidden w-full h-screen relative flex">
       {isComponentVisible ? (
@@ -23,10 +30,10 @@ export default function Home() {
       ) : null}
       <div className="dark hidden flex-shrink-0 bg-gray-900 md:flex md:w-[260px] md:flex-col">
         <div className="flex h-full min-h-0 flex-col ">
-          <Sidebar />
+          <Sidebar onNewChat={clearChat} />
         </div>
       </div>
-      <Chat toggleComponentVisibility={toggleComponentVisibility} />
+      <Chat ref={ref} toggleComponentVisibility={toggleComponentVisibility} />
     </main>
   );
 }
