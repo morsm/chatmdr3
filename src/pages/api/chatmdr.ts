@@ -39,7 +39,7 @@ export default async function handler(
         }
     }    
 
-    const response = await fetch(`http://127.0.0.1:5000/`, {        // TODO: configurable
+    const response = await fetch(process.env.CHATMDR_BACKEND as string, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
