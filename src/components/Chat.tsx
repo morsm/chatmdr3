@@ -197,4 +197,5 @@ const Chat = forwardRef( (props: any, ref) => {
   );
 });
 
+Chat.displayName = "Chat";
 export default Chat;
